@@ -1,0 +1,5 @@
+When we need to conceal the internal structure of an object and offer a more simplified or abstract interface for interaction.
+
+When we need to apply validation or enforce specific rules on the data before it is modified.
+
+When we want to allow access to a property or attribute but restrict any changes to its value.

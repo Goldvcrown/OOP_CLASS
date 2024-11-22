@@ -1,0 +1,1 @@
+Yes, we can use constructor overloading , as long as that 2 constructors have different lists of parameters. 
