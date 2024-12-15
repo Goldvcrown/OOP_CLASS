@@ -1,7 +1,5 @@
 package hust.soict.dsai.aims.store;
-
 import java.util.ArrayList;
-
 
 import hust.soict.dsai.aims.media.Media;
 
@@ -9,6 +7,12 @@ public class Store {
 
     private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
+    public ArrayList<Media> getItemsInStore() {
+		return itemsInStore;
+	}
+
+
+    // Add and remove media from the store
     public void addMedia(Media media) {
         if (itemsInStore.contains(media)) {
             System.out.println("The media " + media.getTitle() + " is already in the store!");
@@ -25,6 +29,7 @@ public class Store {
         }
     }
 
+    // Print the store
     public void print() {
         if (itemsInStore.size() == 0) {
             System.out.println("The store is empty!");

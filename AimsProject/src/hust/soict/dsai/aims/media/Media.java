@@ -1,6 +1,9 @@
 package hust.soict.dsai.aims.media;
 
+import java.time.Duration;
 import java.util.Comparator;
+
+import hust.soict.dsai.aims.exception.PlayerException;
 
 public abstract class Media implements Comparable<Media> {
 
@@ -15,6 +18,7 @@ public abstract class Media implements Comparable<Media> {
     private String category;
     private float cost;
 
+    // Constructor 
     public Media(String title) {
         this.title = title;
 		this.id = ++nbMedia;
@@ -31,6 +35,7 @@ public abstract class Media implements Comparable<Media> {
         this.id = ++nbMedia;
     }
     
+    // Getter method
     public int getId() {
         return id;
     }
@@ -44,10 +49,12 @@ public abstract class Media implements Comparable<Media> {
         return cost;
     }
 
+    // Setter method
     public void setTitle(String title) {
         this.title = title;
     }
     
+    // Check is title match
     public boolean isMatch(String title) {
         return this.getTitle().toLowerCase().contains(title.toLowerCase());
     }
@@ -55,7 +62,17 @@ public abstract class Media implements Comparable<Media> {
     public void play() {
         System.out.println("Playing media");
     }
+    
+    public String playGUI() throws PlayerException {
+        return "Playing media";
+    }
 
+    public String formatDuration(int durationInSeconds) {
+        Duration duration = Duration.ofSeconds(durationInSeconds);
+        return String.format("%02d:%02d", duration.toMinutes(), duration.minusMinutes(duration.toMinutes()).getSeconds());
+    }
+    
+    @Override
     public boolean equals(Object obj) {
         if (obj == this) {
             return true;
@@ -66,12 +83,15 @@ public abstract class Media implements Comparable<Media> {
         return ((Media)obj).getTitle() == this.getTitle();
     }
 
+    @Override
     public String toString() {
         return "Media: " + this.getTitle() +
                 " - Category: " + this.getCategory() +
                 " - Cost: " + this.getCost() + "$";
     }
 
+    // Answer for the second question
+    @Override
     public int compareTo(Media other) {
         int titleComparison = this.getTitle().compareTo(other.getTitle());
         if (titleComparison != 0) {
